@@ -16,10 +16,3 @@ model Product {
   qty   Int    @default(0)
   price Float  @default(0.0)
 }
-
-model Receipt {
-  id           Int    @id @default(autoincrement())
-  payment_type String @default("")
-  description  String @default("")
-  price_total  Float  @default(0.0)
-}
