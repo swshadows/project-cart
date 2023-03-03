@@ -1,5 +1,12 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
+
+const cart: Object[] = []
+
+function addCart(item: Object) {
+  cart.push(item)
+  console.log(cart)
+}
 </script>
 
 <template>
@@ -8,11 +15,12 @@ import { RouterLink, RouterView } from 'vue-router'
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/add">Adicionar Produto</RouterLink>
+        <RouterLink to="/cart">Meu Carrinho</RouterLink>
       </nav>
     </div>
   </header>
 
-  <RouterView />
+  <RouterView @add-cart="addCart" />
 </template>
 
 <style scoped lang="scss">

@@ -3,6 +3,7 @@ import axios from 'axios'
 const host = import.meta.env.VITE_HOST || 'http://localhost:3000'
 
 export default {
+  // Pega os produtos da API
   async getAll() {
     const data = axios
       .get(`${host}/product/get-all`)
@@ -13,5 +14,16 @@ export default {
         console.log(err)
       })
     return data
+  },
+
+  // Insere um produto
+  async add(name: string, qty: number, price: number) {
+    const data = { name, qty, price }
+    axios
+      .post(`${host}/product/add`, data)
+      .then((res) => {
+        return res
+      })
+      .catch((err) => console.log(err))
   }
 }

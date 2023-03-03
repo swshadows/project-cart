@@ -2,6 +2,15 @@
 const props = defineProps({
   product: Object
 })
+
+const emits = defineEmits(['add-cart'])
+
+function test() {
+  if (props.product) {
+    const { name, price } = props.product
+    emits('add-cart', { name, price })
+  }
+}
 </script>
 
 <template>
@@ -9,6 +18,7 @@ const props = defineProps({
     <h3 class="name">{{ product?.name }}</h3>
     <p class="price">R$ {{ product?.price }}</p>
     <p class="stock">Em Estoque: {{ product?.qty }}</p>
+    <button @click="test">🛒</button>
   </div>
 </template>
 

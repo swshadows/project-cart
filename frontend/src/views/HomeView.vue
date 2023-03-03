@@ -5,6 +5,12 @@ import { ref, onMounted } from 'vue'
 
 const products = ref()
 
+const emits = defineEmits(['add-cart'])
+
+function emitAddCart(item: Object) {
+  emits('add-cart', item)
+}
+
 onMounted(async () => {
   const data = await axios.getAll()
   if (data.products) {
@@ -17,7 +23,7 @@ onMounted(async () => {
   <main>
     <div>Bem vindo a nossa loja</div>
     <div class="products">
-      <ProductCard v-for="p in products" :key="p.id" :product="p" />
+      <ProductCard @add-cart="emitAddCart" v-for="p in products" :key="p.id" :product="p" />
     </div>
   </main>
 </template>
