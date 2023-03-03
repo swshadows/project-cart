@@ -27,3 +27,6 @@ coverage
 *.sln
 *.sw?
 .env
+
+# Database related
+migrations
