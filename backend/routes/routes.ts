@@ -7,8 +7,7 @@ routes.get("/", (req, res) => {
   res.send({ msg: "Hello world" });
 });
 
-// ! Rotas reais
-// Rotas de produto
+// Rotas reais
 routes.get("/product/get-all", ProductController.getAll);
 routes.post("/product/add", ProductController.add);
 routes.put("/product/update/:id", ProductController.update);
