@@ -1,12 +1,8 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
+import { useCartStore } from './stores/CartStore'
 
-const cart: Object[] = []
-
-function addCart(item: Object) {
-  cart.push(item)
-  console.log(cart)
-}
+const cart = useCartStore()
 </script>
 
 <template>
@@ -15,12 +11,15 @@ function addCart(item: Object) {
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/add">Adicionar Produto</RouterLink>
-        <RouterLink to="/cart">Meu Carrinho</RouterLink>
+        <RouterLink to="/cart"
+          >Meu Carrinho
+          <span class="small"> ({{ cart.countItems() }}) </span>
+        </RouterLink>
       </nav>
     </div>
   </header>
 
-  <RouterView @add-cart="addCart" />
+  <RouterView />
 </template>
 
 <style scoped lang="scss">
@@ -36,5 +35,8 @@ function addCart(item: Object) {
     gap: 5em;
     font-size: 2rem;
   }
+}
+.small {
+  font-size: 1rem;
 }
 </style>
