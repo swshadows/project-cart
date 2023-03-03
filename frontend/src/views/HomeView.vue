@@ -37,7 +37,7 @@ main {
 }
 .products {
   display: grid;
-  grid-template: 1fr 1fr 1fr 1fr / 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 20px;
   width: 80%;
 }
