@@ -11,6 +11,7 @@ let message = ref()
 let msgType: string = ''
 let timeout: undefined | number
 
+// Verifica se o formulário está preenchido e manda mensagens de acordo
 async function processForm() {
   if (!name.value || !qty.value || !price.value) {
     setMessage('❌ Itens no formulário não preenchidos corretamente', 'error')
@@ -23,6 +24,7 @@ async function processForm() {
   price.value = 0
 }
 
+// Função para settar e resettar mensagem
 function setMessage(msg: string, type: 'error' | 'success') {
   message.value = msg
   msgType = type

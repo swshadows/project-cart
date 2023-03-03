@@ -1,4 +1,5 @@
 <script setup lang="ts">
+// Recebe uma string message e um string type, para definir a mensagem e a classe/aparência
 defineProps({
   message: String,
   type: String

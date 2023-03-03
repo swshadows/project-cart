@@ -1,3 +1,5 @@
+// Usando Pinia para gerenciar o estado do carrinho globalmente com stores
+
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 
