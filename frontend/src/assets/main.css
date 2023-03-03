@@ -11,7 +11,11 @@ a {
 
 a.router-link-active,
 a.router-link.exact-active {
-  color: #ddd1ff;
+  color: #966fff;
   text-decoration: none;
   transform: scale(1.1);
+}
+
+a {
+  color: #ddd1ff;
 }

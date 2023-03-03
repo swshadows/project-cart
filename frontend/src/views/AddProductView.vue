@@ -17,6 +17,7 @@
       </label>
     </form>
   </main>
+  <p class="faded">❗ Essa tela simula um painel de administrador, para adicionar itens</p>
 </template>
 
 <style scoped lang="scss">
@@ -36,5 +37,10 @@ form {
       outline: 0;
     }
   }
+}
+.faded {
+  margin-top: 10px;
+  text-align: center;
+  color: #6b6b6b;
 }
 </style>

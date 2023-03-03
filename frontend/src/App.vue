@@ -19,6 +19,8 @@ import { RouterLink, RouterView } from 'vue-router'
 .wrapper {
   width: 100%;
   padding: 2rem;
+  border-bottom: 3px solid #525252;
+  margin-bottom: 20px;
   nav {
     display: flex;
     justify-content: center;
