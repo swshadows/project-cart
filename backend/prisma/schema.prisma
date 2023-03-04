@@ -18,7 +18,9 @@ model Product {
 }
 
 model Receipt {
-  id      Int      @id @default(autoincrement())
-  payment String   @default("")
-  deliver DateTime @db.Date
+  id         Int      @id @default(autoincrement())
+  items      String   @default("")
+  totalPrice Float    @default(0.0)
+  payment    String   @default("")
+  deliver    DateTime @db.Date
 }

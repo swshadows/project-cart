@@ -16,12 +16,14 @@ export default {
 
   // Adiciona recibos
   async add(req: Request, res: Response) {
-    const { payment, deliver } = req.body;
-    if (isEmpty(payment, deliver))
+    const { payment, deliver, items, totalPrice } = req.body;
+    if (isEmpty(payment, deliver, items, totalPrice))
       return res.status(400).send({ message: ReceiptMessages.empty });
 
     try {
-      await prisma.receipt.create({ data: { payment, deliver } });
+      await prisma.receipt.create({
+        data: { payment, deliver, items, totalPrice },
+      });
       res.status(200).send({ message: ReceiptMessages.addSuccess });
     } catch (error) {
       console.log(error);
