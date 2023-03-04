@@ -9,7 +9,7 @@ const showNull = ref(true)
 // Pegando as notas da API
 onMounted(async () => {
   const data = await receiptAxios.getAll()
-  if (data.receipts) {
+  if (data.receipts.length > 0) {
     receipts.value = formatData(data.receipts)
     showNull.value = false
   }
