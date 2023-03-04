@@ -1,7 +1,17 @@
 <script setup lang="ts">
 import { useCartStore } from '@/stores/CartStore'
+import ModalPurchase from '@/components/ModalPurchase.vue'
+import { ref } from 'vue'
 
 const cart = useCartStore()
+let modalEnabled = ref(false)
+const totalPrice = cart.calcTotalPrice()
+
+// Alterna a visibilidade do modal
+function toggleModal() {
+  console.log(modalEnabled)
+  modalEnabled.value = !modalEnabled.value
+}
 
 const items = cart.items
 </script>
@@ -12,10 +22,16 @@ const items = cart.items
     <div class="item-callout" v-for="item in items" :key="item.id">
       <p>Item: {{ item.name }}</p>
       <p>Preço: R$ {{ item.price }}</p>
+      <p>Quantidade: {{ item.qtdCart }}</p>
     </div>
-    <p class="total-price">Preço total: R$ {{ cart.calcTotalPrice() }}</p>
-    <button class="finish">Finalizar compra</button>
+    <p class="total-price">Preço total: R$ {{ totalPrice }}</p>
+    <button v-if="totalPrice > 0" @click="toggleModal" class="finish">Finalizar compra</button>
   </div>
+  <ModalPurchase
+    :price-total="totalPrice.toString()"
+    @toggle-modal="toggleModal"
+    v-if="modalEnabled"
+  />
 </template>
 
 <style scoped lang="scss">

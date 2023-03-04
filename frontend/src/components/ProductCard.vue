@@ -6,9 +6,25 @@ defineProps({
 
 const cart = useCartStore()
 
-function addToCart(id: number, name: string, price: number) {
-  const item = { id, name, price }
-  cart.items.push(item)
+// Verifica se itens já estão no carrinho. Se sim, incrementa ao já existente. Se não, adiciona
+function addToCart(id: number, name: string, price: number, qtdCart: number) {
+  const item = { id, name, price, qtdCart }
+  let onCart = false
+  let pos: number = 0
+  cart.items.forEach((i, index) => {
+    if (i.id == item.id) {
+      onCart = true
+      pos = index
+      return
+    }
+  })
+  if (onCart) {
+    console.log(pos)
+    cart.items[pos].qtdCart++
+  } else {
+    cart.items.push(item)
+  }
+  if (cart.items.length == 0) cart.items.push(item)
 }
 </script>
 
@@ -17,7 +33,7 @@ function addToCart(id: number, name: string, price: number) {
     <h3 class="name">{{ product?.name }}</h3>
     <p class="price">R$ {{ product?.price }}</p>
     <p class="stock">Em Estoque: {{ product?.qty }}</p>
-    <button @click="addToCart(product?.id, product?.name, product?.price)">🛒</button>
+    <button @click="addToCart(product?.id, product?.name, product?.price, 1)">🛒</button>
   </div>
 </template>
 
