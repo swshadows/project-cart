@@ -9,7 +9,6 @@ const totalPrice = cart.calcTotalPrice()
 
 // Alterna a visibilidade do modal
 function toggleModal() {
-  console.log(modalEnabled)
   modalEnabled.value = !modalEnabled.value
 }
 
