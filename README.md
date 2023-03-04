@@ -22,7 +22,7 @@
 - Backend
   - Acesse a pasta backend com `cd backend`
   - Instale as dependências com `npm install`
-  - Criar arquivo `.env` com uma variável de ambiente `DATABASE_URL`=`"mysql://USER:PASSWORD@localhost:3306/project-cart"` substituindo USER e PASSWORD pelos respectivos usuário e senha do seu banco
+  - Criar arquivo `.env` com uma variável de ambiente `DATABASE_URL="mysql://USER:PASSWORD@localhost:3306/project-cart"` substituindo USER e PASSWORD pelos respectivos usuário e senha do seu banco
   - Crie o banco de dados com `npm run db:migrate`
   - Inicialize o projeto com `npm start`
 - Frontend
