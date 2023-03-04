@@ -16,3 +16,9 @@ model Product {
   qty   Int    @default(0)
   price Float  @default(0.0)
 }
+
+model Receipt {
+  id      Int      @id @default(autoincrement())
+  payment String   @default("")
+  deliver DateTime @db.Date
+}
