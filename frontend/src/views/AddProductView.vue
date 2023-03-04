@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import MessageComponent from '@/components/MessageComponent.vue'
-import axios from '@/services/axios'
+import productAxios from '@/services/productAxios'
 import { ref } from 'vue'
 
 const name = ref('')
@@ -17,7 +17,7 @@ async function processForm() {
     setMessage('❌ Itens no formulário não preenchidos corretamente', 'error')
     return
   }
-  await axios.add(name.value, qty.value, price.value)
+  await productAxios.add(name.value, qty.value, price.value)
   setMessage('✅ Produto adicionado ao banco de dados', 'success')
   name.value = ''
   qty.value = 0

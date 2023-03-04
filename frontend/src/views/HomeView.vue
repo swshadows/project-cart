@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import axios from '@/services/axios'
+import productAxios from '@/services/productAxios'
 import ProductCard from '@/components/ProductCard.vue'
 import { ref, onMounted } from 'vue'
 
@@ -7,7 +7,7 @@ const products = ref()
 
 // Pega produtos registrados no banco de dados
 onMounted(async () => {
-  const data = await axios.getAll()
+  const data = await productAxios.getAll()
   if (data.products) {
     products.value = data.products
   }
