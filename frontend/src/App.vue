@@ -15,6 +15,7 @@ const cart = useCartStore()
           >Meu Carrinho
           <span class="small"> ({{ cart.countItems() }}) </span>
         </RouterLink>
+        <RouterLink to="/receipts">Minhas Compras</RouterLink>
       </nav>
     </div>
   </header>
