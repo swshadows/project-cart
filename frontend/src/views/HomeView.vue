@@ -16,7 +16,7 @@ onMounted(async () => {
 
 <template>
   <main>
-    <div>Bem vindo a nossa loja</div>
+    <h1>Bem vindo a nossa loja</h1>
     <div class="products">
       <ProductCard v-for="p in products" :key="p.id" :product="p" />
     </div>

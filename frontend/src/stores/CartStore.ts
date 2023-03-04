@@ -18,13 +18,21 @@ export const useCartStore = defineStore('cart', () => {
     return items.value.length
   }
 
+  // Pega o nome dos itens unicos no carrinho
+  const getItemNames = () => {
+    const names = items.value.map((item) => {
+      return `${item.qtdCart}x ${item.name}`
+    })
+    return names
+  }
+
   // Calcula o preço total, baseado na quantidade de itens unicos com o preço base de cada
   const calcTotalPrice = () => {
     const prices = items.value.map((item) => {
       return item.price * item.qtdCart
     })
-    return prices.reduce((acc, curr) => acc + curr, 0)
+    return Number(prices.reduce((acc, curr) => acc + curr, 0)).toFixed(2)
   }
 
-  return { items, countItems, calcTotalPrice }
+  return { items, countItems, calcTotalPrice, getItemNames }
 })

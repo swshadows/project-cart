@@ -17,8 +17,8 @@ export default {
   },
 
   // Insere uma nota ao confirmar compra do produto
-  async add(payment: string, deliver: string) {
-    const data = { payment, deliver }
+  async add(payment: string, deliver: string, items: string, totalPrice: number) {
+    const data = { payment, deliver, items, totalPrice }
     axios
       .post(`${host}/receipt/add`, data)
       .then((res) => {

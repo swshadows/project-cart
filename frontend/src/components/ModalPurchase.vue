@@ -9,7 +9,7 @@ const router = useRouter()
 const cart = useCartStore()
 
 defineProps({
-  priceTotal: String
+  priceTotal: Number
 })
 
 const emits = defineEmits(['toggle-modal'])
@@ -29,7 +29,8 @@ function emitToggleModal() {
 // Controla o formulário e gera uma receita
 async function handleForm() {
   const formattedDate = new Date(date.value).toISOString()
-  await receiptAxios.add(option.value, formattedDate)
+  const items = cart.getItemNames().join(', ')
+  await receiptAxios.add(option.value, formattedDate, items, Number(cart.calcTotalPrice()))
   message.value = '✅ Compra confirmada!'
   canClick.value = false
   isDisabled.value = true

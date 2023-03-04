@@ -5,7 +5,7 @@ import { ref } from 'vue'
 
 const cart = useCartStore()
 let modalEnabled = ref(false)
-const totalPrice = cart.calcTotalPrice()
+const totalPrice = Number(cart.calcTotalPrice())
 
 // Alterna a visibilidade do modal
 function toggleModal() {
@@ -26,11 +26,7 @@ const items = cart.items
     <p class="total-price">Preço total: R$ {{ totalPrice }}</p>
     <button v-if="totalPrice > 0" @click="toggleModal" class="finish">Finalizar compra</button>
   </div>
-  <ModalPurchase
-    :price-total="totalPrice.toString()"
-    @toggle-modal="toggleModal"
-    v-if="modalEnabled"
-  />
+  <ModalPurchase :price-total="totalPrice" @toggle-modal="toggleModal" v-if="modalEnabled" />
 </template>
 
 <style scoped lang="scss">
