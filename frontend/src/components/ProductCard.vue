@@ -11,8 +11,8 @@ const icon = ref('🛒 Adicionar')
 let timeout: undefined | number
 
 // Verifica se itens já estão no carrinho. Se sim, incrementa ao já existente. Se não, adiciona
-function addToCart(id: number, name: string, price: number, qtdCart: number) {
-  const item = { id, name, price, qtdCart }
+function addToCart(id: number, name: string, price: number, qtdCart: number, stock: number) {
+  const item = { id, name, price, qtdCart, stock }
   let onCart = false
   let pos: number = 0
   cart.items.forEach((i, index) => {
@@ -47,8 +47,12 @@ function addToCartFeedback() {
   <div class="product-card">
     <h3 class="name">{{ product?.name }}</h3>
     <p class="price">R$ {{ product?.price }}</p>
-    <p class="stock">Em Estoque: {{ product?.qty }}</p>
-    <button class="add" @click="addToCart(product?.id, product?.name, product?.price, 1)">
+    <p class="stock">{{ product?.qty > 0 ? `Em Estoque: ${product?.qty}` : 'Fora de estoque' }}</p>
+    <button
+      class="add"
+      @click="addToCart(product?.id, product?.name, product?.price, 1, product?.qty)"
+      :disabled="product?.qty > 0 ? false : true"
+    >
       {{ icon }}
     </button>
   </div>

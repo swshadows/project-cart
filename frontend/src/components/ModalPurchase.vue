@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import receiptAxios from '@/services/receiptAxios'
+import productAxios from '@/services/productAxios'
 import MessageComponent from './MessageComponent.vue'
 import { ref } from 'vue'
 import { useCartStore } from '@/stores/CartStore'
@@ -31,6 +32,11 @@ async function handleForm() {
   const formattedDate = new Date(date.value).toISOString()
   const items = cart.getItemNames().join(', ')
   await receiptAxios.add(option.value, formattedDate, items, Number(cart.calcTotalPrice()))
+  const itemsObj = cart.getItems()
+  itemsObj.forEach(async (item) => {
+    const newQty = item.stock - item.qtdCart
+    await productAxios.update(item.id, item.name, newQty, item.price)
+  })
   message.value = '✅ Compra confirmada!'
   canClick.value = false
   isDisabled.value = true

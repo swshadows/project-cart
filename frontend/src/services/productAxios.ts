@@ -25,5 +25,16 @@ export default {
         return res
       })
       .catch((err) => console.log(err))
+  },
+
+  // Atualiza o produto pelo ID
+  async update(id: number, name: string, qty: number, price: number) {
+    const data = { name, qty, price }
+    axios
+      .put(`${host}/product/update/${id}`, data)
+      .then((res) => {
+        return res
+      })
+      .catch((err) => console.log(err))
   }
 }
